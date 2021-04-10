@@ -5,8 +5,8 @@
 
 using namespace std;
 
-const int max_size = 1005;
-const int base = 100000000;
+const int max_size = 1005;  // max number of digits
+const int base = 100000000; // base 2, base 10 is familar. But now we are going to use base 10^8
 
 pair<int, int> full_adder(int x, int y); // return first=out, second=carry
 
@@ -16,8 +16,8 @@ private:
     vector<int> digit; // use base 10^8
 public:
     BigNum();
-    BigNum(int x);
-    void print_big_num();
+    BigNum(int x); // constructor: construct a BigNum with value x, x < 10^8
+    void print_big_num(); // print
     int read_digit(int index);
     void change_digit(int num, int index);
     void left_shift(int i); // means multiply base
@@ -71,7 +71,7 @@ BigNum::BigNum(int x)
     digit[0] = x;
 }
 
-pair<int, int> full_adder(int x, int y)
+pair<int, int> full_adder(int x, int y) // a simple full_adder. in order to deal with add BigNums
 {
     pair<int, int> res;
     res.first = (x + y) % (base);
@@ -79,7 +79,7 @@ pair<int, int> full_adder(int x, int y)
     return res;
 }
 
-BigNum big_num_add(BigNum x, BigNum y)
+BigNum big_num_add(BigNum x, BigNum y)// like a pupil will learn in school
 {
     int carry{0};
     int out;
@@ -111,6 +111,9 @@ void BigNum::print_big_num()
     cout << *itr << endl;
 }
 
+
+// template for fast power algorithm
+// can be used to calculate power with mul, or calculate mul with add
 template <typename M, M(mul)(M, M)>
 M fast_power(M x, int k, M e) // x^k (e is identity)
 {
@@ -139,7 +142,7 @@ BigNum big_num_multiply_int(BigNum x, int n)
     return res;
 }
 
-BigNum big_num_multiply(BigNum x, BigNum y)
+BigNum big_num_multiply(BigNum x, BigNum y)// mul x with every digit of y then add them
 {
     BigNum res(0);
     BigNum temp;
@@ -164,6 +167,7 @@ BigNum big_num_power_int(BigNum x, int n)
 
 int main()
 {
+    // test bench
     // BigNum x(3);
     // x.print_big_num();
     // BigNum y(99999999);
