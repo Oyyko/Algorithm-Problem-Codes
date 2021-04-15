@@ -8,7 +8,7 @@ using namespace std;
 const int max_size = 1005;  // max number of digits
 const int base = 100000000; // base 2, base 10 is familar. But now we are going to use base 10^8
 
-pair<int, int> full_adder(int x, int y); // return first=out, second=carry
+pair<int, int> full_adder(int x, int y,int carryin); // return first=out, second=carryout
 
 class BigNum
 {
@@ -16,11 +16,11 @@ private:
     vector<int> digit; // use base 10^8
 public:
     BigNum();
-    BigNum(int x); // constructor: construct a BigNum with value x, x < 10^8
+    BigNum(int x);        // constructor: construct a BigNum with value x, x < 10^8
     void print_big_num(); // print
     int read_digit(int index);
     void change_digit(int num, int index);
-    void left_shift(int i); // means multiply base
+    void left_shift(int i); // means multiply base^i
 };
 
 void BigNum::left_shift(int i)
@@ -71,26 +71,26 @@ BigNum::BigNum(int x)
     digit[0] = x;
 }
 
-pair<int, int> full_adder(int x, int y) // a simple full_adder. in order to deal with add BigNums
+pair<int, int> full_adder(int x, int y, int carryin) // a simple full_adder. in order to deal with add BigNums
 {
     pair<int, int> res;
-    res.first = (x + y) % (base);
-    res.second = (x + y) / base;
+    res.first = (x + y + carryin) % (base);
+    res.second = (x + y + carryin) / base;
     return res;
 }
 
-BigNum big_num_add(BigNum x, BigNum y)// like a pupil will learn in school
+BigNum big_num_add(BigNum x, BigNum y) // like a pupil will learn in school
 {
-    int carry{0};
+    int carryout{0};
     int out;
     pair<int, int> temp;
     BigNum z;
     for (int i = 0; i < max_size; ++i)
     {
-        temp = full_adder(x.read_digit(i), y.read_digit(i));
+        temp = full_adder(x.read_digit(i), y.read_digit(i), carryout);
         out = temp.first;
-        z.change_digit(out + carry, i);
-        carry = temp.second;
+        z.change_digit(out, i);
+        carryout = temp.second;
     }
     return z;
 }
@@ -110,7 +110,6 @@ void BigNum::print_big_num()
     }
     cout << *itr << endl;
 }
-
 
 // template for fast power algorithm
 // can be used to calculate power with mul, or calculate mul with add
@@ -142,7 +141,7 @@ BigNum big_num_multiply_int(BigNum x, int n)
     return res;
 }
 
-BigNum big_num_multiply(BigNum x, BigNum y)// mul x with every digit of y then add them
+BigNum big_num_multiply(BigNum x, BigNum y) // mul x with every digit of y then add them
 {
     BigNum res(0);
     BigNum temp;
