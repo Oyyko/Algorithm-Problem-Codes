@@ -27,7 +27,8 @@ vector<size_t> sort_index(const vector<T> &v) // the i_th integer of the output 
     vector<size_t> index(v.size());
     iota(index.begin(), index.end(), 0);
 
-    stable_sort(index.begin(), index.end(), [&v](size_t i1, ssize_t i2) { return v[i1] < v[i2]; });
+    stable_sort(index.begin(), index.end(), [&v](size_t i1, ssize_t i2)
+                { return v[i1] < v[i2]; });
     return index;
 }
 
