@@ -13,17 +13,15 @@ void pr(vector<T> x)
     cout << endl;
 }
 
-int abs1(int x)
-{
-    return x > 0 ? x : -x;
-}
-
-#include <cmath>
+#include <map>
+#include <unordered_map>
 
 int main()
 {
-    int x{-2147483648};
-    cout << x << endl; //-2147483648
-    cout << -x;        //-2147483648
-    //int [-2^31,2^31-1]
+    unordered_map<int, int> hash;
+    hash.insert(make_pair(1, 10));
+    hash.insert(make_pair(2, 20));
+    hash.insert(make_pair(3, 30));
+    auto it = hash.find(10);
+    cout << it->second;
 }
