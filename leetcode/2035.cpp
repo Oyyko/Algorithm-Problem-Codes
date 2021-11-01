@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -14,9 +16,5 @@ void pr(vector<T> x)
 
 int main()
 {
-    priority_queue<int> x;
-    x.push(2);
-    x.push(3);
-    x.push(4);
-    cout << x.top();
+    
 }
