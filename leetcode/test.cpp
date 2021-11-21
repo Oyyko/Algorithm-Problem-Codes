@@ -14,14 +14,9 @@ void pr(vector<T> x)
 
 int main()
 {
-    auto dfs = [](auto &&dfs, auto idx)
-    {
-        dfs(dfs, idx + 0);
-    };
-    auto fib = [](auto &&fib, int n)
-    {
-        if (n == 1 || n == 2)
-            return 1;
-        return fib(fib, n - 1) + fib(fib, n - 2);
-    };
+    int x;
+    scanf("%d", &x);
+    int a[x];
+    a[1] = 1;
+    cout << a[1];
 }
