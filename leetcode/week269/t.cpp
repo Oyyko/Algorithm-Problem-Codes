@@ -16,7 +16,12 @@ void pr(vector<T> x)
 
 int main()
 {
-    vector<int> v{1, 3, 5, 7, 2, 4, 6, 8};
-    partial_sort(v.begin(), v.begin() + v.size(), v.end(), greater());
-    pr(v);
+    set<int> tt;
+    tt.insert(3);
+    tt.insert(2);
+    tt.insert(5);
+    for (auto &x : tt)
+    {
+        cout << x;
+    }
 }
