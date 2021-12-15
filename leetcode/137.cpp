@@ -14,10 +14,15 @@ void pr(vector<T> x)
     cout << endl;
 }
 
+class Solution
+{
+public:
+    int singleNumber(vector<int> &nums)
+    {
+        
+    }
+};
+
 int main()
 {
-    int a = 100;
-    int b = 300;
-    tie(a, b) = pair{b, a};
-    cout << a << b;
 }

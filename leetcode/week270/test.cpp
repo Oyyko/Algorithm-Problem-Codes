@@ -16,8 +16,13 @@ void pr(vector<T> x)
 
 int main()
 {
-    int a = 100;
-    int b = 300;
-    tie(a, b) = pair{b, a};
-    cout << a << b;
+    int a = 0b11111'0101;
+    int b = 0b11111'1100;
+    int x = min(a, b);
+    int y = max(a, b);
+    while (y > x)
+    {
+        y &= y - 1;
+    }
+    cout << y;
 }
