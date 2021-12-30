@@ -3,12 +3,6 @@
 #include <queue>
 #include <vector>
 #include <map>
-#include <set>
-#include <string>
-#include <unordered_map>
-#include <unordered_set>
-#include <stack>
-#include <algorithm>
 using namespace std;
 
 using LL = long long;
@@ -23,8 +17,18 @@ void pr(vector<T> x)
     cout << endl;
 }
 
+class Solution
+{
+public:
+    vector<int> recoverArray(vector<int> &nums)
+    {
+        if (nums.size() == 2)
+        {
+            return vector<int>{(nums[0] + nums[1]) / 2};
+        }
+    }
+};
+
 int main()
 {
-    unordered_map<int, int> s;
-    cout << (s[10] = 1) << s[10];
 }

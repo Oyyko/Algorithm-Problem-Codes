@@ -4,10 +4,10 @@
 #include <vector>
 #include <map>
 #include <set>
-#include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <stack>
+#include <cmath>
 #include <algorithm>
 using namespace std;
 
@@ -25,6 +25,5 @@ void pr(vector<T> x)
 
 int main()
 {
-    unordered_map<int, int> s;
-    cout << (s[10] = 1) << s[10];
+    cout << sqrt(121);
 }
