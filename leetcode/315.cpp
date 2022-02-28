@@ -27,27 +27,24 @@ void pr(vector<T> x)
 class Solution
 {
 public:
-    int lengthOfLIS(vector<int> &nums)
+    vector<int> countSmaller(vector<int> &nums)
     {
+        multiset<int> L;
         int n = nums.size();
-        vector<int> d; // d[len]=k 即 长为len的子序列，最小的末尾数是k
-        d.push_back(nums[0]);
-        for (int i{1}; i < n; ++i)
+        vector<int> ans(n);
+        for (int i = n - 1; i >= 0; --i)
         {
-            if (nums[i] > d.back())
-            {
-                d.push_back(nums[i]);
-            }
-            else
-            {
-                auto l = lower_bound(d.begin(), d.end(), nums[i]);
-                *l = nums[i];
-            }
+            auto location = lower_bound(L.begin(), L.end(), nums[i]);
+            ans[i] = location - L.begin();
+            L.insert(location, nums[i]);
         }
-        return d.size();
+        return ans;
     }
 };
 
 int main()
 {
+    Solution s;
+    vector<int> v{5, 2, 6, 1};
+    pr(s.countSmaller(v));
 }

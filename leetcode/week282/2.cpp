@@ -27,9 +27,23 @@ void pr(vector<T> x)
 class Solution
 {
 public:
-}
+    int minSteps(string s, string t)
+    {
+        vector<int> cnt1(300, 0);
+        vector<int> cnt2(300, 0);
+        for (auto &x : s)
+            cnt1[x]++;
+        for (auto &x : t)
+            cnt2[x]++;
+        int ans{};
+        for (int x = 'a'; x <= 'z'; ++x)
+        {
+            ans += abs(cnt1[x] - cnt2[x]);
+        }
+        return ans;
+    }
+};
 
-int
-main()
+int main()
 {
 }

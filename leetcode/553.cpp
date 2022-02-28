@@ -27,24 +27,26 @@ void pr(vector<T> x)
 class Solution
 {
 public:
-    int lengthOfLIS(vector<int> &nums)
+    string optimalDivision(vector<int> &nums)
     {
         int n = nums.size();
-        vector<int> d; // d[len]=k 即 长为len的子序列，最小的末尾数是k
-        d.push_back(nums[0]);
-        for (int i{1}; i < n; ++i)
+        if (n == 1)
+            return to_string(nums[0]);
+        if (n == 2)
+            return to_string(nums[0]) + "/" + to_string(nums[1]);
+
+        string ans{};
+        ans.reserve(10005);
+        ans += to_string(nums[0]);
+        ans += "/(";
+        for (int i = 1; i < n - 1; ++i)
         {
-            if (nums[i] > d.back())
-            {
-                d.push_back(nums[i]);
-            }
-            else
-            {
-                auto l = lower_bound(d.begin(), d.end(), nums[i]);
-                *l = nums[i];
-            }
+            ans += to_string(nums[i]);
+            ans += "/";
         }
-        return d.size();
+        ans += to_string(nums[n - 1]);
+        ans += ")";
+        return ans;
     }
 };
 

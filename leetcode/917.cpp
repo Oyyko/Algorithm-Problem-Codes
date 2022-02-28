@@ -5,7 +5,6 @@
 #include <map>
 #include <set>
 #include <string>
-#include <numeric>
 #include <unordered_map>
 #include <unordered_set>
 #include <stack>
@@ -27,24 +26,30 @@ void pr(vector<T> x)
 class Solution
 {
 public:
-    int lengthOfLIS(vector<int> &nums)
+    string reverseOnlyLetters(string s)
     {
-        int n = nums.size();
-        vector<int> d; // d[len]=k 即 长为len的子序列，最小的末尾数是k
-        d.push_back(nums[0]);
-        for (int i{1}; i < n; ++i)
+        auto l = s.begin();
+        auto r = s.end() - 1;
+        while (l != r)
         {
-            if (nums[i] > d.back())
+            while (l != r && !isalpha(*l))
             {
-                d.push_back(nums[i]);
+                l++;
             }
-            else
+            while (l != r && !isalpha(*r))
             {
-                auto l = lower_bound(d.begin(), d.end(), nums[i]);
-                *l = nums[i];
+                r--;
+            }
+            if (l == r)
+                break;
+            swap(*l, *r);
+            l++, r--;
+            if (l == r + 1)
+            {
+                break;
             }
         }
-        return d.size();
+        return s;
     }
 };
 

@@ -27,24 +27,28 @@ void pr(vector<T> x)
 class Solution
 {
 public:
-    int lengthOfLIS(vector<int> &nums)
+    int numberOfWays(string corridor)
     {
-        int n = nums.size();
-        vector<int> d; // d[len]=k 即 长为len的子序列，最小的末尾数是k
-        d.push_back(nums[0]);
-        for (int i{1}; i < n; ++i)
+        const int MOD = 1000000007;
+        long long ans{1};
+        int n = corridor.size();
+        int cnt{}, pre{-1};
+        for (int i{}; i < n; ++i)
         {
-            if (nums[i] > d.back())
+            if (corridor[i] == 'S')
             {
-                d.push_back(nums[i]);
-            }
-            else
-            {
-                auto l = lower_bound(d.begin(), d.end(), nums[i]);
-                *l = nums[i];
+                cnt++;
+                if (cnt >= 3 && cnt & 1)
+                {
+                    ans *= (i - pre);
+                    ans %= MOD;
+                }
+                pre = i;
             }
         }
-        return d.size();
+        if (!cnt || cnt & 1)
+            return 0;
+        return ans;
     }
 };
 

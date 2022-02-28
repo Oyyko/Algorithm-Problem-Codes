@@ -24,12 +24,6 @@ void pr(vector<T> x)
     cout << endl;
 }
 
-class Solution
-{
-public:
-}
-
-int
-main()
+int main()
 {
 }

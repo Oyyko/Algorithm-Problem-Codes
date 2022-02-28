@@ -27,9 +27,18 @@ void pr(vector<T> x)
 class Solution
 {
 public:
-}
+    int prefixCount(vector<string> &words, string pref)
+    {
+        int cnt{};
+        int l = pref.size();
+        for (auto &x : words)
+        {
+            cnt += (x.substr(0, l) == pref);
+        }
+        return cnt;
+    }
+};
 
-int
-main()
+int main()
 {
 }

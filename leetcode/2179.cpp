@@ -26,10 +26,16 @@ void pr(vector<T> x)
 
 class Solution
 {
-public:
-}
+private:
+    using LL = long long;
 
-int
-main()
+public:
+    long long goodTriplets(vector<int> &nums1, vector<int> &nums2)
+    {
+        
+    }
+};
+
+int main()
 {
 }

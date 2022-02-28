@@ -28,30 +28,33 @@ class Solution
 public:
     int minOperations(vector<int> &target, vector<int> &arr)
     {
-        int n = target.size();
-        unordered_map<int, int> p;
-        for (int i = 0; i < n; ++i)
+        unordered_map<int, int> pos;
+        for (int i{}, _ = target.size(); i < _; ++i)
+            pos[target[i]] = i;
+        vector<int> tmp;
+        for (auto &x : arr)
         {
-            p[target[i]] = i;
-        }
-        vector<int> d;
-        for (int v : arr)
-        {
-            if (p.count(v))
+            if (pos.find(x) != pos.end())
             {
-                int index = p[v];
-                auto it = lower_bound(d.begin(), d.end(), index);
-                if (it != d.end())
-                {
-                    *it = index;
-                }
-                else
-                {
-                    d.push_back(index);
-                }
+                tmp.push_back(pos[x]);
             }
         }
-        return n - d.size();
+        vector<int> d;
+        if (tmp.size() == 0)
+            return target.size();
+        d.push_back(tmp[0]);
+        for (int i{1}, _ = tmp.size(); i < _; ++i)
+        {
+            int &x = tmp[i];
+            if (x > d.back())
+                d.push_back(x);
+            else
+            {
+                auto l = lower_bound(d.begin(), d.end(), x);
+                *l = x;
+            }
+        }
+        return target.size() - d.size();
     }
 };
 int main()
