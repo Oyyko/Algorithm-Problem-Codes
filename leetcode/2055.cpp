@@ -28,6 +28,9 @@ public:
             sum[i + 1] = sum[i] + (s[i] == '*');
         }
         vector<int> ans;
+        cout << l[6] << endl;
+        cout << l[5 + 1] + 1 << endl;
+        cout << r[0] << endl;
         for (auto x : queries)
             ans.push_back(max(0, sum[l[x[1] + 1] + 1] - sum[r[x[0]]]));
         return ans;
@@ -36,4 +39,7 @@ public:
 
 int main()
 {
+    Solution s;
+    vector<vector<int>> v = {{0, 5}};
+    pr(s.platesBetweenCandles("*|**|*|*"s, v));
 }
