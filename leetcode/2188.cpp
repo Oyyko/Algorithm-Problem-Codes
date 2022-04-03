@@ -24,12 +24,15 @@ void pr(vector<T> x)
     cout << endl;
 }
 
+class Solution
+{
+public:
+    int minimumFinishTime(vector<vector<int>> &tires, int changeTime, int numLaps)
+    {
+        
+    }
+};
+
 int main()
 {
-    vector<int> v{1, 7, 7, 7, 8};
-    auto itr = lower_bound(v.begin(), v.end(), 7);
-    cout << itr - v.begin();
-    auto itr2 = upper_bound(v.begin(), v.end(), 7);
-    cout << itr2 - v.begin();
-    [1,2)
 }
