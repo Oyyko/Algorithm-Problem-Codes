@@ -44,12 +44,20 @@ T upper_divide(T a, T b)
     return (a - 1) / b + 1;
 }
 
-#include <random>
+class Solution
+{
+public:
+    int maximumWealth(vector<vector<int>> &accounts)
+    {
+        int ans{-1};
+        for (auto &x : accounts)
+        {
+            ans = max(ans, accumulate(x.begin(), x.end(), 0));
+        }
+        return ans;
+    }
+};
 
 int main()
 {
-    random_device rm;
-    cout << rm.min() << endl;
-    cout << rm.max() << endl;
-    cout << (1ll << 32);
 }
