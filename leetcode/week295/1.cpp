@@ -1,0 +1,86 @@
+#include <iostream>
+#include <random>
+#include <climits>
+#include <queue>
+#include <vector>
+#include <map>
+#include <set>
+#include <string>
+#include <numeric>
+#include <unordered_map>
+#include <unordered_set>
+#include <stack>
+#include <algorithm>
+using namespace std;
+
+using LL = long long;
+
+template <typename T>
+void pr(vector<T> x)
+{
+    for (auto a : x)
+    {
+        cout << a << " ";
+    }
+    cout << endl;
+}
+
+template <class T>
+void pr(vector<vector<T>> x)
+{
+    for (auto &a : x)
+    {
+        for (auto &b : a)
+        {
+            cout << b << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+template <class T>
+T upper_divide(T a, T b)
+{
+    return (a - 1) / b + 1;
+}
+
+class Solution
+{
+public:
+    int rearrangeCharacters(string s, string target)
+    {
+        int n = s.size(), m = target.size();
+        if (m > n)
+            return 0;
+        unordered_map<char, int> mp1, mp2;
+        for (auto &c : target)
+        {
+            mp1[c]++;
+        }
+        for (auto &c : s)
+        {
+            mp2[c]++;
+        }
+        int ans = INT_MAX;
+        for (auto [cc, cnt] : mp1)
+        {
+            // cout << cc << mp1[cc] << mp2[cc] << endl;
+            if (mp2[cc] != 0)
+            {
+                ans = min(ans, mp2[cc] / cnt);
+            }
+            if (mp2[cc] == 0)
+                return 0;
+        }
+        if (ans == INT_MAX)
+            return 0;
+        return ans;
+    }
+};
+
+int main()
+{
+    Solution s;
+    cout << s.rearrangeCharacters("ilovecodingonleetcode", "xxx");
+}
