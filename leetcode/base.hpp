@@ -1,5 +1,5 @@
 #include <iostream>
-#include<random>
+#include <random>
 #include <climits>
 #include <queue>
 #include <vector>
@@ -44,4 +44,3 @@ T upper_divide(T a, T b)
 {
     return (a - 1) / b + 1;
 }
-
