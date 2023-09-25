@@ -1,35 +1,25 @@
-#include <iostream>
-#include <climits>
-#include <queue>
-#include <vector>
-#include <map>
-#include <set>
-#include <string>
-#include <numeric>
+#include "base.hpp"
 #include <unordered_map>
-#include <unordered_set>
-#include <stack>
-#include <algorithm>
-using namespace std;
 
-using LL = long long;
+using ll = long long;
+using vi = vector<int>;
+using vii = vector<vector<int>>;
 
-template <typename T>
-void pr(vector<T> x)
-{
-    for (auto a : x)
-    {
-        cout << a << " ";
+class Solution {
+public:
+  vector<int> twoSum(vector<int> &nums, int target) {
+    unordered_map<int, int> mp;
+    for (int i{}, _ = nums.size(); i < _; ++i) {
+      mp[nums[i]] = i;
     }
-    cout << endl;
-}
+    for (int i{}, _ = nums.size(); i < _; ++i) {
+      if (auto itr = mp.find(target - nums[i]); itr != mp.end()) {
+        if (i != itr->second)
+          return {i, itr->second};
+      }
+    }
+    return {};
+  }
+};
 
-int main()
-{
-    vector<int> v{1, 7, 7, 7, 8};
-    auto itr = lower_bound(v.begin(), v.end(), 7);
-    cout << itr - v.begin();
-    auto itr2 = upper_bound(v.begin(), v.end(), 7);
-    cout << itr2 - v.begin();
-    [1,2)
-}
+int main() {}
