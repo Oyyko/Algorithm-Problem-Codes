@@ -1,26 +1,17 @@
 #include "base.hpp"
 
-using ll = long long;
-using vi = vector<int>;
-using vvi = vector<vector<int>>;
-using pii = pair<int, int>;
-
-class Solution {
-public:
-  int maxSubArray(vector<int> &nums) {
-    int maxSubArray{}, nowSubArray{};
-    maxSubArray = nowSubArray = nums.front();
-    for (int i = 1; i < nums.size(); ++i) {
-      int num = nums[i];
-      if (nowSubArray < 0) {
-        nowSubArray = num;
-      } else {
-        nowSubArray = num + nowSubArray;
+  class Solution {
+  public:
+    int maxSubArray(vector<int> &nums) {
+      int n = nums.size();
+      int now_max{};
+      int ans=nums.front();
+      for(auto&x: nums){
+        now_max=max(now_max+x,x);
+        ans=max(ans,now_max);
       }
-      maxSubArray = max(maxSubArray, nowSubArray);
+      return ans;
     }
-    return maxSubArray;
-  }
-};
+  };
 
 int main() {}
