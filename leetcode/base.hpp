@@ -14,7 +14,6 @@
 #include <vector>
 #include <limits>
 using namespace std;
-using LL = long long;
 
 template <typename T>
 void pr(vector<T> x)
