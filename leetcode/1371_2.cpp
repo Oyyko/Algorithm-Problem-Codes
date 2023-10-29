@@ -43,7 +43,6 @@ public:
             {
                 status ^= 1 << 4;
             }
-            cout << "S:" << status << endl;
             if (~pos[status])
             {
                 ans = max(ans, i + 1 - pos[status]);
