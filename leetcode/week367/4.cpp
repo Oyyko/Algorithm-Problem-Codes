@@ -51,10 +51,10 @@ public:
         
         for(int i = 0; i< n-indexDifference; i++){
             if(abs(leftLess[i]- rightMore[i+indexDifference]) >= valueDifference){
-                vector<int> tmp;
-                tmp.push_back(leftLessIndex[i]);
-                tmp.push_back(rightMoreIndex[i+indexDifference]);
-                return tmp;
+                vector<int> sxsxs;
+                sxsxs.push_back(leftLessIndex[i]);
+                sxsxs.push_back(rightMoreIndex[i+indexDifference]);
+                return sxsxs;
             }
             if(abs(leftMore[i]- rightLess[i+indexDifference]) >= valueDifference){
                 vector<int> asdsd;
